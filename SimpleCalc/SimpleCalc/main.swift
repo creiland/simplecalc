@@ -1,11 +1,3 @@
-//
-//  main.swift
-//  SimpleCalc
-//
-//  Created by Ted Neward on 10/3/17.
-//  Copyright © 2017 Neward & Associates. All rights reserved.
-//
-
 import Foundation
 
 public class Calculator {
@@ -27,15 +19,26 @@ public class Calculator {
                 ret = first! % second!
             }
         } else {
-            let operation = args[args.count]
+            let operation = args[args.count - 1]
             if operation == "count" {
                 ret = args.count - 1
             } else if operation == "avg" {
-                ret = 0
-                for _ in 0...(args.count - 1){
-                    ret += 1
+                var sum = 0
+                var x = 0
+                while args[x] != "avg"{
+                    sum = sum + Int(args[x])!
+                    x = x + 1
+                }
+                
+                if(args.count <= 1) {
+                    ret = 0
+                } else {
+                    ret = sum / (args.count - 1)
                 }
             } else if operation == "fact" {
+                if(args.count == 1){
+                    return 0
+                }
                 let num = Int(args[0])
                 if num! > 0 {
                     ret = 1
@@ -50,7 +53,7 @@ public class Calculator {
         return ret
     }
     
-    public func calculate(_ arg: String) -> Int {
+    public func calculate(_ arg: String) -> Int 
         return calculate( arg.split(separator: " ").map({ substr in String(substr) }) )
     }
 }
