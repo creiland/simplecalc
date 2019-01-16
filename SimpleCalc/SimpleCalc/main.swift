@@ -53,7 +53,7 @@ public class Calculator {
         return ret
     }
     
-    public func calculate(_ arg: String) -> Int 
+    public func calculate(_ arg: String) -> Int {
         return calculate( arg.split(separator: " ").map({ substr in String(substr) }) )
     }
 }
