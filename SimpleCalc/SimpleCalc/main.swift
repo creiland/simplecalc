@@ -1,6 +1,7 @@
 import Foundation
 
-public class Calculator {
+public class Calculator{
+    
     public func calculate(_ args: [String]) -> Int {
         var ret : Int = 0
         if args.count == 3 {
